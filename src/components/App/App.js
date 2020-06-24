@@ -8,8 +8,7 @@ class App extends React.Component {
       <main className={styles.component}>  
         <h1 className={styles.title}>My first React app</h1>
         <h2 className={styles.subtitle}>Hello world!</h2>
-        <List title={['Things to do ', <sup>soon!</sup>]} imgSpace="http://uploads.kodilla.com/bootcamp/fer/11.react/space.png">          
-        </List>
+        <List />
       </main>
     )
   }
@@ -17,4 +16,4 @@ class App extends React.Component {
 
 export default App;
 
-// { } – pozwalają na wstawienie kodu JS wewnątrz kodu JSX.
+// { } – pozwalają na wstawienie kodu JS wewnątrz kodu JSX. 
