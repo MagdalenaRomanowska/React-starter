@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Creator.scss';
 import Button from '../Button/Button';
-import Card from '../Card/Card.js';
 import PropTypes from 'prop-types';
 
 class Creator extends React.Component {

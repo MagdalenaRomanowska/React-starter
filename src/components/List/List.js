@@ -6,7 +6,6 @@ import styles from './List.scss';
 import Hero from '../Hero/Hero.js';
 import Column from '../Column/Column.js';
 import Creator from '../Creator/Creator.js';
-import Card from '../Card/Card.js';
 
 class List extends React.Component {
   state = {   //Początkowy stan komponentu. Tylko i wyłącznie przy ustawianiu początkowego stanu można przypisać wartość do this.state za pomocą znaku równości =. Poza tym przypadkiem zawsze będziemy zmieniać stan za pomocą metody this.setState, odziedziczonej z klasy React.Component.

@@ -4,6 +4,7 @@ import styles from './Column.scss';
 import {settings} from '../../data/dataStore';
 import Card from '../Card/Card.js';
 import Creator from '../Creator/Creator.js';
+import Icon from '../Icon/Icon.js';
 
 class Column extends React.Component {
   state = {   //Początkowy stan komponentu. Tylko i wyłącznie przy ustawianiu początkowego stanu można przypisać wartość do this.state za pomocą znaku równości =. Poza tym przypadkiem zawsze będziemy zmieniać stan za pomocą metody this.setState, odziedziczonej z klasy React.Component.
@@ -12,6 +13,7 @@ class Column extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     title: PropTypes.string,
+    icon: PropTypes.string,
   }
 
   addCard(title){  //"dodaj do this.state.cards nowy obiekt".
@@ -31,7 +33,11 @@ class Column extends React.Component {
   render() {
     return (
       <section className={styles.component}>  
-        <h3 className={styles.title}>{this.props.title}</h3>
+        <h3 className={styles.title}>{this.props.title}
+          <span className={styles.icon}>
+            <Icon name={this.props.icon}/>
+          </span>
+        </h3>
         <div className={styles.cards}>
           {this.state.cards.map(({key, ...cardProps}) => (
             <Card key={key} {...cardProps} />
