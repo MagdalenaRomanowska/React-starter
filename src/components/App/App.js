@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './App.scss';
 import List from '../List/List.js';
-import {pageContents, listData} from '../../data/dataStore';
+import {pageContents, listData} from '../../data/dataStore';//import obiektów.
 
 class App extends React.Component {
   render() { //Od zawartości tej metody zależy to, co wyświetli się w przeglądarce.
@@ -11,7 +11,7 @@ class App extends React.Component {
         <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
         <List {...listData} />
       </main>
-    )
+    );
   }
 }
 

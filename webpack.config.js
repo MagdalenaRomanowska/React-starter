@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const baseConfig = () => ({ //elementy konfiguracji, które są wspólne dla wersji developerskiej i produkcyjnej.
-  entry: './src/index.js',//główny kod aplikacji.
+  entry: './src/index.js',//tu jest główny kod aplikacji.
   output: {  //wskazuje miejsce, w którym ma być wygenerowana wersja produkcyjna, 
     //stworzona za pomocą komendy npm run build. Jest też odpowiedzialny za nazwę pliku, w którym znajdzie się scalony i skonwertowany kod JS naszej aplikacji.
     path: path.join(__dirname, 'dist'),
