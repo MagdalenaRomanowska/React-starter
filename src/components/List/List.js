@@ -4,13 +4,10 @@ import {settings} from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';//Wykorzystamy go do sparsowania kodu HTML w opisie listy.
 import styles from './List.scss';
 import Hero from '../Hero/Hero.js';
-import Column from '../Column/Column.js';
-import Creator from '../Creator/Creator.js';
+import Column from '../Column/ColumnContainer.js';
+//import Creator from '../Creator/Creator.js';
 
 class List extends React.Component {
-  state = {   //Początkowy stan komponentu. Tylko i wyłącznie przy ustawianiu początkowego stanu można przypisać wartość do this.state za pomocą znaku równości =. Poza tym przypadkiem zawsze będziemy zmieniać stan za pomocą metody this.setState, odziedziczonej z klasy React.Component.
-    columns: this.props.columns || [], //operator lub || - podanie domyślnej wartości w przypadku, gdy żądana właściwość nie istnieje. Innymi słowy, jeśli this.props.columns nie zostało zdefiniowane, czyli komponent nie otrzymał propsa columns, to w this.state.columns znajdzie się pusta tablica [].
-  }
   static propTypes = {
     title: PropTypes.node.isRequired,
     image: PropTypes.string,
@@ -21,37 +18,24 @@ class List extends React.Component {
     description: settings.defaultListDescription,
   }
 
-  addColumn(title){  //"dodaj do this.state.columns nowy obiekt".
-    this.setState(state => (
-      {
-        columns: [
-          ...state.columns,
-          {
-            key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
-            title,
-            icon: 'list-alt',
-            cards: [],
-          },
-        ],
-      }
-    ));
-  }
-
   render() {
+    const {title, image, description, columns} = this.props; //zdefiniowanie poszczególnych propsów jako stałe.
     return (
       <section className={styles.component}>  
-        <Hero titleText={this.props.title} imgRocket={this.props.image} />
+        <Hero titleText={title} image={image} />
         <div className={styles.description}>
-          {ReactHtmlParser(this.props.description)}          
+          {ReactHtmlParser(description)}
         </div>
         <div className={styles.columns}>
-          {this.state.columns.map(({key, ...columnProps}) => (
-            <Column key={key} {...columnProps} />
-          ))} 
+          {columns.map(columnData => (//iteracja po kolumnach.
+            <Column key={columnData.id} {...columnData} />
+          ))}
         </div>
+        {/*
         <div className={styles.creator}>
           <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)}/>
         </div>
+        */}
       </section>
     );
   }
