@@ -1,3 +1,6 @@
+// ten plik (kontener) to powiązanie stanu aplikacji z propsami.
+//Pozwoli nam to na oddzielenie warstwy współpracującej ze stanem od samego komponentu.
+
 import {connect} from 'react-redux';
 import App from './App';  //AppContainer.js importuje komponent, dla którego jest kontenerem – w tym wypadku App,
 

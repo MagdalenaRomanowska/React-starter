@@ -4,7 +4,6 @@ import styles from './Card.scss';
 
 class Card extends React.Component {
   static propTypes = {
-    children: PropTypes.node,
     title: PropTypes.string,
   }
 

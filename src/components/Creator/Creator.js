@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 
 class Creator extends React.Component {
   static propTypes = {
-    text: PropTypes.string,
-    action: PropTypes.func,
+    text: PropTypes.string, //treść placeholdera w polu tekstowym, która służy 
+    //wyjaśnieniu do czego służy dany komponent.
+    action: PropTypes.func, //zawiera funkcję, która będzie wykonana w momencie 
+    //kliknięcia guzika "OK" (widocznego po wpisaniu jakiegoś tekstu w pole tekstowe).
   }
 
   static defaultProps = {

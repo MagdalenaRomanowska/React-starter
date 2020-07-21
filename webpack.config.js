@@ -76,7 +76,8 @@ const prodConfig = () => ({//dotyczące wersji produkcyjnej.
   ],
 });
 
-module.exports = (env, argv) => {
+module.exports = (env, argv) => {  //wyeksportuje konfigurację, aby była dostępna dla webpacka.
+  //W naszym przypadku jest to funkcja strzałkowa, która łączy ze sobą baseConfig oraz jeden z pozostałych obiektów (devConfig lub prodConfig), w zależności od trybu.
   const modeConfig = argv.mode == 'production' ? prodConfig : devConfig;
 
   return merge(baseConfig(), modeConfig());

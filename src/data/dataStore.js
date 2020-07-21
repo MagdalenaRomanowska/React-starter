@@ -141,8 +141,8 @@ const cards = [
   },
 ];
 
-const initialStoreData = {
-  app: {...pageContents},
+const initialStoreData = { //początkowy stan aplikacji.
+  app: {...pageContents}, //treść aplikacji.
   lists: [...lists],
   columns: [...columns],
   cards: [...cards],
