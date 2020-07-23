@@ -2,7 +2,7 @@ import {combineReducers, createStore} from 'redux';
 import initialStoreData from '../data/dataStore';
 import columnsReducer from './columnsRedux';
 import cardsReducer from './cardsRedux';
-
+import searchStringReducer from './searchStringRedux';
 
 // define initial state and shallow-merge initial data
 const initialState = {
@@ -13,10 +13,14 @@ const initialState = {
   searchString: '',
 };
 
-// define reducers
+// define reducers - wskazujemy magazynowi, skąd ma wziąć reducery tych właściwości stanu.
+//Zaimportowaliśmy je z plików src/redux/...Reducer.js.
+//Redux wspiera tylko jeden reducer, obsługujący cały magazyn. W praktyce, jednak, 
+//bardzo często rozbija się go na mniejsze reducery
 const reducers = {
   columns: columnsReducer,
   cards: cardsReducer,
+  searchString: searchStringReducer,
 };
 
 // add blank reducers for initial state properties without reducers
@@ -26,10 +30,11 @@ Object.keys(initialState).forEach(item => {
   }
 });
 
-// merge all reducers
+// merge all reducers. cząstkowe reducery są łączone w jeden za pomocą funkcji 
+//combineReducers, zaimportowanej z pakietu redux. 
 const storeReducer = combineReducers(reducers);
 
-// create store
+// create store - stworzenie magazynu za pomocą funkcji createStore, zaimportowanej z pakietu redux.
 const store = createStore(
   storeReducer,
   initialState,

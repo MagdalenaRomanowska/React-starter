@@ -3,7 +3,12 @@ import shortid from 'shortid'; //Ten pakiet pozwala na generowanie krótkich, lo
 //identyfikatorów. Dzięki niemu identyfikatory poszczególnych kart nie będą się powtarzać.
 
 // selectors - służy do wyboru elementów – jest to funkcja filtrująca jakiś fragment stanu aplikacji.
-export const getCardsForColumn = ({cards}, columnId) => cards.filter(card => card.columnId == columnId);
+export const getCardsForColumn = ({ cards, searchString }, columnId) =>
+  cards.filter(
+    (card) =>
+      card.columnId == columnId &&
+      new RegExp(searchString, 'i').test(card.title) //sprawdza czy tytuł karty pasuje do wyszukiwanej frazy.
+  );
 // wybiera karty z danej kolumny. Zwraca tablicę, zawierającą wyłącznie karty o columnId 
 //pasującym do wyświetlanej kolumny. pierwszym argumentem jest state, z którego 
 //destrukturyzujemy właściwość cards.

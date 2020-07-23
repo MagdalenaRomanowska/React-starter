@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './App.scss';
 import PropTypes from 'prop-types';
 import List from '../List/ListContainer.js';
+import Search from '../Search/SearchContainer.js';
 
 class App extends React.Component {// dziedziczenie z klasy React.Component.
   static propTypes = {
@@ -17,6 +18,7 @@ class App extends React.Component {// dziedziczenie z klasy React.Component.
       <main className={styles.component}>
         <h1 className={styles.title}>{title}</h1>
         <h2 className={styles.subtitle}>{subtitle}</h2>
+        <Search />
         {lists && lists.map(listData => (//iteracja po listach.
           <List key={listData.id} {...listData} />
         ))}
