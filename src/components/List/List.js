@@ -6,6 +6,7 @@ import styles from './List.scss';
 import Hero from '../Hero/Hero.js';
 import Column from '../Column/ColumnContainer.js';
 import Creator from '../Creator/Creator.js';
+import Container from '../Container/Container.js';
 
 class List extends React.Component {
   static propTypes = {  //Definicje typów właściwości (propsów) wpiszemy na samym początku klasy.
@@ -29,20 +30,22 @@ class List extends React.Component {
     const {title, image, description, columns, addColumn} = this.props; //zdefiniowanie poszczególnych propsów jako stałe.
     return (
       <section className={styles.component}>  
-        <Hero titleText={title} image={image} />
-        <div className={styles.description}>
-          {ReactHtmlParser(description)}
-        </div>
-        <div className={styles.columns}>
-          {columns && columns.map(columnData => (//iteracja po kolumnach.
-            <Column key={columnData.id} {...columnData} /> //jeśli w pętlu lub 
-            //metodzie .map generujemy komponent dla każdego elementu z tablicy, 
-            //musimy jawnie przypisać klucz tego komponentu.
-          ))}
-        </div>
-        <div className={styles.creator}>
-          <Creator text={settings.columnCreatorText} action={addColumn}/>
-        </div>
+        <Container>      
+          <Hero titleText={title} image={image} />
+          <div className={styles.description}>
+            {ReactHtmlParser(description)}
+          </div>
+          <div className={styles.columns}>
+            {columns && columns.map(columnData => (//iteracja po kolumnach.
+              <Column key={columnData.id} {...columnData} /> //jeśli w pętlu lub 
+              //metodzie .map generujemy komponent dla każdego elementu z tablicy, 
+              //musimy jawnie przypisać klucz tego komponentu.
+            ))}
+          </div>
+          <div className={styles.creator}>
+            <Creator text={settings.columnCreatorText} action={addColumn}/>
+          </div>
+        </Container>
       </section>
     );
   }
