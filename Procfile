@@ -1,1 +1,1 @@
-web: npm server
+web: http-server dist
