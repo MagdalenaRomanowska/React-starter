@@ -2,7 +2,7 @@ import React from 'react';  //Importujemy zainstalowane biblioteki.
 import './styles/normalize.scss';
 import './styles/global.scss';
 import ReactDOM from 'react-dom';  //Importujemy zainstalowane biblioteki.
-import App from './components/App/AppContainer';
+import App from './components/App/App';
 import { Provider } from 'react-redux'; //poinformowanie aplikacji, że ma korzystać z magazynu Reduksa.
 import store from './redux/store';//poinformowanie aplikacji, że ma korzystać z magazynu Reduksa.
 

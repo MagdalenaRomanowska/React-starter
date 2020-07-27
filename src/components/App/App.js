@@ -1,36 +1,30 @@
+//ten plik to "centrum dowodzenia" routingiem w naszym projekcie.
+//Ten plik informuje aplikację, jakie komponenty powinna wyświetlić, 
+//gdy użytkownik znajduje się na określonej podstronie (czyli ścieżce path). 
+//Strona główna aplikacji będzie pokazywać komponent Home, a gdy na końcu adresu 
+//w przeglądarce dodamy /info, przeniesiemy się na naszą nową stronę statyczną.
+
 import React from 'react';
-import styles from './App.scss';
-import PropTypes from 'prop-types';
-import List from '../List/ListContainer.js';
-import Search from '../Search/SearchContainer.js';
+import Home from '../Home/HomeContainer';
+import Info from '../Info/Info';
+import FAQ from '../FAQ/FAQ';
+import MainLayout from '../MainLayout/MainLayout';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-class App extends React.Component {// dziedziczenie z klasy React.Component.
-  static propTypes = {
-    title: PropTypes.node,
-    subtitle: PropTypes.node,
-    lists: PropTypes.array,
-  }
-
-  render() { //Od zawartości tej metody zależy to, co wyświetli się w przeglądarce.
-    const {title, subtitle, lists} = this.props;
-    return (  //Podstawową zasadą tworzenia komponentu jest to, że musi 
-      //zwracać dokładnie jeden element najwyższego poziomu. Tutaj to main.
-      <main className={styles.component}>
-        <h1 className={styles.title}>{title}</h1>
-        <h2 className={styles.subtitle}>{subtitle}</h2>
-        <Search />
-        {lists && lists.map(listData => (//iteracja po listach.
-          <List key={listData.id} {...listData} />
-        ))}
-      </main>
-    );
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <MainLayout>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/info' component={Info} />
+        <Route exact path='/faq' component={FAQ} />
+      </Switch>
+    </MainLayout>
+  </BrowserRouter>
+);
 
 export default App;
 
-// { } – pozwalają na wstawienie kodu JS wewnątrz kodu JSX.
-// {...listData} to spread operator, który pozwala na rozpakowanie obiektu 
-//lub tablicy. Oznacza to, że wszystkie właściwości (title, description, image, columns)
-// z listData zostaną przekazane do komponentu List, jako jego właściwości.
-// Początkowy stan listy kolumn będzie korzystał z this.props.columns.
+//atrybut exact, dzięki któremu dany widok pokaże się tylko wtedy, gdy będziemy 
+//na dokładnie takiej ścieżce, jak zdefiniowana w routingu (np. w drugim przypadku 
+//musi to być dokładnie /info, a nie np. info/about-me).
