@@ -92,6 +92,18 @@ const lists = [
     description: 'Interesting things I want to check out!',
     image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   },
+  {
+    id: 'list-2',
+    title: 'Second list',
+    description: 'Second list Second list Second list.',
+    image: 'https://i.postimg.cc/qvG6xBsc/sunset1.jpg',
+  },
+  {
+    id: 'list-3',
+    title: 'Third list',
+    description: 'Third list Third list Third list.',
+    image: 'https://i.postimg.cc/2SCVyps1/sunset2.jpg',
+  },
 ];
 
 const columns = [

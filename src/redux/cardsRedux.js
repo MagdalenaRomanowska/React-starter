@@ -13,6 +13,14 @@ export const getCardsForColumn = ({ cards, searchString }, columnId) =>
 //pasującym do wyświetlanej kolumny. pierwszym argumentem jest state, z którego 
 //destrukturyzujemy właściwość cards.
 
+// selectors - służy do wyboru elementów – jest to funkcja filtrująca jakiś fragment stanu aplikacji.
+export const getCardsBySearchString = ({ cards }, searchString ) =>
+  cards.filter(
+    (card) =>
+      new RegExp(searchString, 'i').test(card.title) //sprawdza czy tytuł karty pasuje do wyszukiwanej frazy.
+  );
+// wybiera karty ze wszystkich list, z uwzględnieniem wyszukiwanej frazy.
+
 // action name creator - Zależy nam na tym, aby zareagował tylko jeden 
 //z reducerów – dlatego właśnie używamy kreatora nazw akcji. 
 const reducerName = 'cards'; //zapisujemy nazwę właściwości stanu, na której będziemy wykonywać akcje.

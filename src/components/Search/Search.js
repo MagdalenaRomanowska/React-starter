@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 import { settings } from '../../data/dataStore';
 import Icon from '../Icon/Icon';
 import Container from '../Container/Container';
+import {withRouter} from 'react-router';
 
 class Search extends React.Component {
   static propTypes = {
     text: PropTypes.string,
     searchString: PropTypes.string, //zawiera aktualną frazę wyszukania, pobraną ze stanu aplikacji,
-    changeSearchString: PropTypes.func,//dispatcher wysyłający akcję, która ma na celu zmianę searchString w stanie aplikacji.
     countVisible: PropTypes.number,//zawiera liczbę kart widocznych po przefiltrowaniu,
     countAll: PropTypes.number,//zawiera liczbę wszystkich kart,
+    history: PropTypes.string,
   }
 
   static defaultProps = {
@@ -32,7 +33,7 @@ class Search extends React.Component {
 
   handleOK(){
     console.log(this.state.value);
-    this.props.changeSearchString(this.state.value);
+    this.props.history.push(`/search/${this.state.value}`);//to wyrażenie będzie zmieniać adres strony, informując o tym Router.
   }
 
   componentDidUpdate(prevProps){
@@ -66,4 +67,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);
